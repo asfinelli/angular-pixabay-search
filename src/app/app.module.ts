@@ -5,6 +5,7 @@ import { HttpModule} from '@angular/http';
 import { AppComponent } from './app.component';
 import { ImageListComponent } from './image-list/image-list.component';
 import { ImageService } from './shared/image.service';
+import { MaterialModule } from './material.module'
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { ImageService } from './shared/image.service';
   imports: [
     BrowserModule,
     HttpModule,
-    FormsModule
+    FormsModule,
+    MaterialModule
   ],
   providers: [ImageService],
   bootstrap: [AppComponent]

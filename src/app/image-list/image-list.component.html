@@ -1,11 +1,22 @@
-<input class="search" [(ngModel)]="searchQuery" placeholder="Search for Images">
-<button (click)="searchImages(searchQuery)">Find Images</button>
-
-<p *ngIf="searching">Fetching data...</p>
-<div *ngFor="let image of images" class=image-container>
-  <img src="{{ image.webformatURL }}">
-  <p>Tags: {{ image.tags }} </p>
-  <p>User: {{ image.user }} </p>
-  <p>Comments: {{ image.comments }} </p>
-  <p>Likes: {{ image.likes }} </p>
+    <input class="search" mdInput [(ngModel)]="searchQuery"
+    name="search" placeholder="Search for images">
+  <br>
+  <button (click)="searchImages(searchQuery)"
+    md-raised-button class="searchButton" type="button">Find Images</button>
+<div *ngIf="searching">
 </div>
+<md-container>
+  <h4 *ngIf="imagesFound" md-subeader>Results</h4>
+    <p *ngFor="let image of images" class=image-container>
+        <a href="{{ image.pageURL }}" target="_bank">
+            <div class="avatar" [ngStyle]="{'background-image':'url('+ image.userImageURL +')', 'background-size':'40px 40px'}"></div>
+            <title>User: {{ image.user }}</title>
+          <img src="{{image.webformatURL}}">
+
+            <p>Tags: {{ image.tags }}</p>
+            <p>Comments: {{ image.comments }}</p>
+            <p>Likes: {{ image.likes }}</p>
+        </a>
+      <br><br>
+    </p>
+</md-container>
